@@ -29,18 +29,22 @@
           </h1>
           
           <div class="is-size-5 publication-authors">
-            <span class="author-block">
-              <a href="#">Yang Yang</a><sup>1</sup>,</span>
-            <span class="author-block">
-              <a href="#">Author 2</a><sup>2</sup>,</span>
-            <span class="author-block">
-              <a href="#">Author 3</a><sup>1</sup>
-            </span>
+            <span class="author-block">Yang Yang<sup>1</sup>,</span>
+            <span class="author-block">Yuchuang Tong<sup>1</sup>,</span>
+            <span class="author-block">Zhengtao Zhang<sup>1</sup>,</span>
+            <span class="author-block">Ning Yang<sup>1</sup>,</span>
+            <span class="author-block">Yifan Zhang<sup>1</sup>,</span>
+            <span class="author-block">Haipeng Li<sup>1</sup>,</span>
+            <span class="author-block">Xu Ding<sup>2</sup>,</span>
+            <span class="author-block"><a href="mailto:miao.xin.cv@outlook.com">Miao Xin</a><sup>3</sup><sup>*</sup>,</span>
+            <span class="author-block">Kehu Yang<sup>3</sup></span>
           </div>
 
-          <div class="is-size-5 publication-authors">
-            <span class="author-block"><sup>1</sup>Your Institution,</span>
-            <span class="author-block"><sup>2</sup>Other Institution</span>
+          <div class="is-size-6 publication-authors">
+            <span class="author-block"><sup>1</sup>Institute of Automation, Chinese Academy of Sciences</span><br>
+            <span class="author-block"><sup>2</sup>Intelligent Manufacturing Institute, HFUT; School of Electrical Engineering and Automation, Anhui University</span><br>
+            <span class="author-block"><sup>3</sup>School of Artificial Intelligence, China University of Mining and Technology (Beijing)</span><br>
+            <span class="author-block"><sup>*</sup>Corresponding author: <a href="mailto:miao.xin.cv@outlook.com">miao.xin.cv@outlook.com</a></span>
           </div>
 
           <div class="column has-text-centered">
@@ -84,7 +88,7 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            The capability of imagining internally with a mental model of the world is important for intelligent agents. However, existing Large Language Model (LLM)-driven paradigms for Automated Reward Design (ARD) fundamentally lack such causal understanding. Relying on observational correlations embedded in physical trajectories without decoupling confounding factors, these methods suffer from profound mechanistic blindness. Consequently, they often misinterpret spurious correlates as true causal prerequisites, triggering systemic bottlenecks such as Optimization Collapse and Specification Gaming, which necessitate computationally prohibitive evolutionary trial-and-error loops. In this paper, we propose Causal Reward World Models (CRWMs) to enable unconfounded causal structural reasoning. Through a joint optimization engine, our framework distills a pure, task-invariant causal skeleton from continuous multi-task dynamics by explicitly decoupling state-dependent transient interactions. Elevating this refined structural prior empowers the LLM to execute rigorous counterfactual reasoning and causal pruning during the synthesis phase—structurally allocating zero weight to spurious correlates. Extensive experiments across complex continuous control tasks demonstrate that CRWM effectively guides the eradication of non-causal vulnerabilities responsible for these failures, achieving true zero-shot reward generation that not only exhibits exceptional efficiency but also yields task performance that closely approaches state-of-the-art (SOTA) results.
+            Automated Reward Design (ARD) aims to replace manual reward engineering in reinforcement learning with language-driven reward function synthesis. However, existing approaches based on large language models (LLMs) remain inherently correlation-driven, relying on iterative environmental feedback to refine reward hypotheses for each specific task. This paradigm not only results in inefficient reasoning but also makes LLMs susceptible to semantically plausible yet causally spurious reward components, leading to ineffective optimization. To address these limitations, we propose the Causal Reward World Model (CRWM), which explicitly models the causal topological relationships between candidate reward components and task-targeted physical variables through offline pre-training on multi-task interaction data. Based on a coarse-to-fine pre-training strategy, we introduce a Joint Optimization Module that integrates Explicit Mechanism Decoupling with Confidence-Aware Soft Fusion to refine coarse structural priors using micro-level trajectories, thereby constructing robust and interpretable causal skeleton. During inference, LLMs leverage CRWM as a task-irrelevant causal prior to constrain the reward generation, enabling zero-shot reward function design. Our work opens up a new white-box paradigm for the ARD problem. Extensive experiments on complex continuous control benchmarks demonstrate that CRWM generates executable reward functions without feedback-driven reward refinement, significantly reducing the design latency for acquiring new robotic skills while matching or surpassing state-of-the-art performance, and further exhibits strong generalization capabilities across unseen tasks and diverse robotic embodiments.
           </p>
         </div>
       </div>
@@ -100,7 +104,7 @@
           <h2 class="title is-3">Demonstration</h2>
           <div class="demonstration-video-shell">
             <video class="demonstration-video" poster="" autoplay controls muted loop playsinline>
-              <source src="static/videos/CRWM_new.mp4" type="video/mp4">
+              <source src="static/videos/CRWM.mp4" type="video/mp4">
             </video>
           </div>
         </div>
@@ -424,7 +428,7 @@
         <h2 class="title is-3">Conclusions</h2>
         <div class="content has-text-justified">
           <p>
-            In this study, we presented Causal Reward World Models (CRWMs) to redefine the landscape of Automated Reward Design (ARD). Rather than relying on computationally exhaustive evolutionary searches that are inherently prone to exploiting spurious correlations, our framework bridges the critical gap between the semantic reasoning of Large Language Models (LLMs) and genuine physical dynamics. By systematically disentangling stationary topological laws from transient physical noise, we successfully extract generalizable causal priors from offline multi-task data. When deployed as explicit structural constraints during code synthesis, these priors guide foundation models to effectively bypass the pervasive pitfalls of \textit{Optimization Collapse} and \textit{Specification Gaming}. Ultimately, the CRWM paradigm facilitates the synthesis of highly aligned, executable reward functions in a strictly zero-shot manner, delivering state-of-the-art policy performance while eliminating the need for expensive online environmental iterations.
+            In this work, we present Causal Reward World Models (CRWM) for zero-shot automated reward design. Instead of relying on iterative reward refinement, CRWM distills a reusable reward-relevant causal skeleton from offline multi-task data and uses it as an explicit structural prior for LLM-based reward generation. By accounting for state-dependent transient interactions during distillation, CRWM guides the LLM to prune spurious reward terms and synthesize executable rewards in a single pass. Experiments across unseen tasks, different embodiments, and real-world settings show that CRWM-guided rewards achieve strong performance without deployment-time evolutionary search. These results suggest that incorporating reward-relevant causal structure is a promising direction for improving the robustness and efficiency of automated reward design.
           </p>
         </div>
       </div>
